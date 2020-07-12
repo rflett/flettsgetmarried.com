@@ -1,0 +1,48 @@
+// Taken from bootstrap grid breakpoints
+$xs: 0;
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+
+@mixin col-xs() {
+  @media (min-width: $xs) {
+    @content;
+  }
+}
+
+@mixin col-sm() {
+  @media (min-width: $sm) {
+    @content;
+  }
+}
+
+@mixin sm-down() {
+  @media (max-width: $sm) {
+    @content;
+  }
+}
+
+@mixin col-md() {
+  @media (min-width: $md) {
+    @content;
+  }
+}
+
+@mixin md-down() {
+  @media (max-width: $md) {
+    @content;
+  }
+}
+
+@mixin col-lg() {
+  @media (min-width: $lg) {
+    @content;
+  }
+}
+
+@mixin col-xl() {
+  @media (min-width: $xl) {
+    @content;
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "flettsgetmarried",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt-ts build",
+    "start": "nuxt-ts start",
+    "export": "nuxt-ts export",
+    "serve": "nuxt-ts serve"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.13.1",
+    "@nuxt/typescript-runtime": "^0.4.10",
+    "nuxt": "^2.13.0",
+    "nuxt-buefy": "^0.3.31",
+    "nuxt-fontawesome": "^0.4.0"
+  },
+  "devDependencies": {
+    "@nuxt/typescript-build": "^1.0.3",
+    "node-sass": "^4.14.1",
+    "sass-loader": "^9.0.2"
+  }
+}
