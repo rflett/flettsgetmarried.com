@@ -12,6 +12,10 @@ build:
     - npm ci
     - npm run build
     - npm run export
+  artifacts:
+    paths:
+      - dist
+    expire_in: 1 days
 
 deploy:
   image: python:3.7-slim-buster
