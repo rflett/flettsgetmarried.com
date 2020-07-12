@@ -1,0 +1,21 @@
+stages:
+ - build
+ - deploy
+
+ build:
+  image: node:buster-slim
+  only:
+    - master
+  script:
+    - npm install -g nuxt
+    - npm ci
+    - npm run export
+
+deploy:
+  image: python:3.7-slim-buster
+  only:
+    - master
+  script:
+    - pip install awscli
+    - cd dist
+    - aws s3 sync --delete --sse . s3://flettsgetmarried.com
