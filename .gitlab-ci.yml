@@ -25,4 +25,4 @@ deploy:
   script:
     - pip install awscli
     - cd dist
-    - aws s3 sync --delete --sse . s3://flettsgetmarried.com
+    - aws s3 sync --delete --sse AES256 . s3://flettsgetmarried.com
