@@ -2,8 +2,9 @@ stages:
  - build
  - deploy
 
- build:
+build:
   image: node:buster-slim
+  stage: build
   only:
     - master
   script:
@@ -13,6 +14,7 @@ stages:
 
 deploy:
   image: python:3.7-slim-buster
+  stage: deploy
   only:
     - master
   script:
