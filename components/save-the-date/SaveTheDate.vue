@@ -22,7 +22,7 @@
         </div>
 
         <div class="column more-info">
-          <h2>More info including RSVPs coming soon...</h2>
+          <h2>COVID-19 updates and RSVPs coming soon</h2>
         </div>
 
         <div class="column nicole">
