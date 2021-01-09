@@ -2,6 +2,7 @@ name: Build and publish flettsgetmarried.com
 # on:
 #   release:
 #     types: [published]
+on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
