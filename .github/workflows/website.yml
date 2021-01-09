@@ -12,8 +12,12 @@ jobs:
         uses: actions/setup-node@v2.1.4
       - run: mkdir .npm-global
       - run: NPM_CONFIG_PREFIX=.npm-global npm install -g nuxt
+      - run: export PATH="/home/runner/work/flettsgetmarried.com/.npm-global;$PATH"
+      - run: npm ci
       - run: npm run build
+        working-directory: website
       - run: nuxt generate
+        working-directory: website
       - name: Upload static web files
         uses: actions/upload-artifact@v2
         with:
