@@ -4,7 +4,7 @@
     <div class="hero-body">
       <div class="date-text">
         <h1 class="save-the-date">Save the date</h1>
-        <h1 class="date">26 . 03 . 21</h1>
+        <h1 class="date">25 . 03 . 22</h1>
       </div>
     </div>
 
@@ -22,7 +22,7 @@
         </div>
 
         <div class="column more-info">
-          <h2>COVID-19 updates and RSVPs coming soon</h2>
+          <h2>RSVPs coming later this year</h2>
         </div>
 
         <div class="column nicole">

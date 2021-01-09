@@ -10,16 +10,16 @@
     "serve": "nuxt-ts serve"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.13.1",
+    "@fortawesome/fontawesome-free": "^5.15.1",
     "@nuxt/typescript-runtime": "^0.4.10",
-    "nuxt": "^2.13.0",
+    "nuxt": "^2.14.12",
     "nuxt-buefy": "^0.3.31",
     "nuxt-fontawesome": "^0.4.0"
   },
   "devDependencies": {
     "@nuxt/typescript-build": "^1.0.3",
-    "@nuxtjs/google-analytics": "^2.3.0",
+    "@nuxtjs/google-analytics": "^2.4.0",
     "node-sass": "^4.14.1",
-    "sass-loader": "^9.0.2"
+    "sass-loader": "^9.0.3"
   }
 }
