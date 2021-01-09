@@ -42,4 +42,4 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: dist
-      - run: aws s3 sync --delete --sse AES256 dist/ s3://flettsgetmarried.com
+      - run: aws s3 sync --delete --sse AES256 website/dist/ s3://flettsgetmarried.com
