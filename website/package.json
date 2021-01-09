@@ -4,10 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "nuxt",
-    "build": "nuxt-ts build",
-    "start": "nuxt-ts start",
-    "export": "nuxt-ts export",
-    "serve": "nuxt-ts serve"
+    "build": "nuxt build",
+    "generate": "nuxt generate"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.1",
