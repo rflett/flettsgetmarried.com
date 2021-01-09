@@ -3,12 +3,11 @@
 ## Build Setup
 
 ```bash
+cd website
+
 # install dependencies
-make deps
+npm install
 
 # serve with hot reload at localhost:80
-make dev
-
-# build for S3 hosting
-make deploy
+npm run dev
 ```
