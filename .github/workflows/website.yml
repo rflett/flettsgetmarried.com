@@ -21,6 +21,7 @@ jobs:
         working-directory: website
       - name: Upload static web files
         uses: actions/upload-artifact@v2
+        working-directory: website
         with:
           name: dist
           path: dist/
