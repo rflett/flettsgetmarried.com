@@ -1,0 +1,47 @@
+service: flettsgetmarried-api
+frameworkVersion: '>=1.28.0 <2.0.0'
+
+provider:
+  name: aws
+  runtime: go1.x
+  region: ap-southeast-2
+  stage: ${opt:staging, 'prod'}
+  iamRoleStatements:
+    - Effect: 'Allow'
+      Action:
+        - dynamodb:PutItem
+      Resource: "arn:aws:dynamodb:ap-southeast-2:292374005836:table/wedding-rsvps"
+
+package:
+  exclude:
+    - ./**
+  include:
+    - ./bin/**
+
+functions:
+  createRSVP:
+    handler: bin/createRSVP
+    name: ${self:service}-create-rsvp-${self:provider.stage}
+    description: "Creates an RSVP"
+    memorySize: 128
+    timeout: 10
+    events:
+      - http:
+          path: rsvp
+          method: post
+
+resources:
+  Resources:
+    rsvpTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: wedding-rsvps
+        AttributeDefinitions:
+          - AttributeName: Contact
+            AttributeType: S
+        KeySchema:
+          - AttributeName: Contact
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
