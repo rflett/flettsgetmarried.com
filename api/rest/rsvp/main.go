@@ -10,9 +10,11 @@ import (
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
 	"github.com/aws/aws-sdk-go/service/dynamodb/dynamodbattribute"
+	"net/http"
 )
 
 const rsvpTable = "wedding-rsvps"
+const rsvpToken = "flett2022"
 
 var (
 	awsSession, _ = session.NewSession(&aws.Config{Region: aws.String("ap-southeast-2")})
@@ -77,11 +79,20 @@ func (r RSVP) Create() error {
 // Handler is the entrypoint to the lambda
 func Handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
 
+	// check X-RSVP-Token header
+	if token, exists := request.Headers["X-RSVP-Token"]; exists {
+		if token != rsvpToken {
+			return events.APIGatewayProxyResponse{Body: "Incorrect token", StatusCode: http.StatusUnauthorized}, nil
+		}
+	} else {
+		return events.APIGatewayProxyResponse{Body: "Missing token", StatusCode: http.StatusForbidden}, nil
+	}
+
 	// unmarshall request body to RequestBody struct
 	requestBody := RequestBody{}
 	jsonErr := json.Unmarshal([]byte(request.Body), &requestBody)
 	if jsonErr != nil {
-		return events.APIGatewayProxyResponse{Body: jsonErr.Error(), StatusCode: 400}, nil
+		return events.APIGatewayProxyResponse{Body: jsonErr.Error(), StatusCode: http.StatusBadRequest}, nil
 	}
 
 	// create in database
@@ -94,11 +105,11 @@ func Handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRespo
 	}
 	createErr := rsvp.Create()
 	if createErr != nil {
-		return events.APIGatewayProxyResponse{Body: createErr.Error(), StatusCode: 500}, nil
+		return events.APIGatewayProxyResponse{Body: createErr.Error(), StatusCode: http.StatusInternalServerError}, nil
 	}
 
 	// create and send the response
-	return events.APIGatewayProxyResponse{Body: "", StatusCode: 201}, nil
+	return events.APIGatewayProxyResponse{Body: "", StatusCode: http.StatusCreated}, nil
 }
 
 func main() {
