@@ -26,6 +26,10 @@
             <b-input maxlength="200" type="textarea"></b-input>
         </b-field>
 
+        <b-field label="Song Requests">
+            <b-input maxlength="300" type="textarea"></b-input>
+        </b-field>
+
         <div class="notification is-primary">
             <div class="buttons">
                 <b-button type="is-primary" inverted outlined>Cancel</b-button>
