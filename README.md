@@ -28,3 +28,8 @@ curl --location --request POST 'https://api.flettsgetmarried.com/rsvp' \
     "absentees": ["Kara Hazelman"]
 }'
 ```
+
+# TODO
+
+- Allow people to upload photos
+- Make all the photos visible on the site
