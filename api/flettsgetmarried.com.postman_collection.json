@@ -1,0 +1,86 @@
+{
+	"info": {
+		"_postman_id": "51b376ab-3032-442e-90cf-e03872a586e0",
+		"name": "flettsgetmarried.com",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Search for invite",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.flettsgetmarried.com/search?firstName=Ryan&lastName=Flett",
+					"protocol": "https",
+					"host": [
+						"api",
+						"flettsgetmarried",
+						"com"
+					],
+					"path": [
+						"search"
+					],
+					"query": [
+						{
+							"key": "firstName",
+							"value": "Ryan"
+						},
+						{
+							"key": "lastName",
+							"value": "Flett"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create RSVP",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "flett2022",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "X-RSVP-Token",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"inviteId\": \"2\",\r\n    \"guests\": [\r\n        {\r\n            \"UpdatedAt\": null,\r\n            \"InviteID\": \"2\",\r\n            \"Vaccinated\": true,\r\n            \"RSVP\": true,\r\n            \"Music\": null,\r\n            \"Email\": \"nicole.dickinson@hotmail.com\",\r\n            \"Mobile\": \"0412345678\",\r\n            \"Diet\": null,\r\n            \"FirstName\": \"Nicole\",\r\n            \"ID\": \"00619ee9-519e-4328-bd8b-32614ccf844b\",\r\n            \"LastName\": \"Hazelman\",\r\n            \"CreatedAt\": \"2021-11-08T13:43:53Z\"\r\n        },\r\n        {\r\n            \"UpdatedAt\": null,\r\n            \"InviteID\": \"2\",\r\n            \"Vaccinated\": false,\r\n            \"RSVP\": false,\r\n            \"Music\": null,\r\n            \"Email\": null,\r\n            \"Mobile\": null,\r\n            \"Diet\": null,\r\n            \"FirstName\": \"Mitch\",\r\n            \"ID\": \"6665f18e-96ae-4fe0-88a2-18d040af630b\",\r\n            \"LastName\": \"Tinning\",\r\n            \"CreatedAt\": \"2021-11-08T13:43:53Z\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.flettsgetmarried.com/rsvp",
+					"protocol": "https",
+					"host": [
+						"api",
+						"flettsgetmarried",
+						"com"
+					],
+					"path": [
+						"rsvp"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
