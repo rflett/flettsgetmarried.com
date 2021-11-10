@@ -6,6 +6,7 @@ import (
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
 	"net/http"
+	"strings"
 )
 
 type responseBody struct {
@@ -17,9 +18,10 @@ func Handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRespo
 	firstName := request.QueryStringParameters["firstName"]
 	lastName := request.QueryStringParameters["lastName"]
 
-	invites, _ := services.FindInvites(firstName, lastName)
+	invites, _ := services.FindInvites(strings.ToLower(firstName), strings.ToLower(lastName))
 
-	var matches []types.HTTPBody = nil
+	var matches []types.HTTPBody
+	matches = []types.HTTPBody{}
 	for _, inviteID := range invites {
 		guests, _ := services.GetGuestsOnInvite(inviteID)
 		matches = append(matches, types.HTTPBody{
