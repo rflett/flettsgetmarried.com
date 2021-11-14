@@ -7,7 +7,7 @@
     <div class="columns is-centered">
       <div class="column is-one-quarter">
         <div class="block">
-          <b-field label="Name">
+          <b-field label="Full Name">
             <b-input v-model="searchVal"
                      type="text"
                      placeholder="Ryan Flett"
@@ -29,6 +29,7 @@
     <div class="columns is-centered" v-if="searchCommenced">
       <p v-if="!foundInvites">Oops! We’re having trouble finding your invite. Please try another spelling of your name or contact the couple</p>
       <div v-if="foundInvites">
+
         <!-- This displays the radio boxes for selecting the invite-->
         <div class="block" v-for="match in searchResults.matches">
           <b-radio v-model="selectedInvite" name="name" :native-value="match.inviteID">
@@ -40,12 +41,12 @@
         <div class="block">
           <b-field>
             <b-button type="is-primary"
-                      icon-left="arrow-right-thin"
                       label="Continue"
                       @click="selectInvite"
                       expanded />
           </b-field>
         </div>
+
       </div>
     </div>
 
@@ -87,12 +88,14 @@
         // const invite = this.searchResults.matches.find((match) => {match.inviteID = this.selectedInvite});
         // console.log(invite.guests);
         const invite = this.searchResults.matches.find(m => m.inviteID == this.selectedInvite);
-        this.$emit('inviteSelected', invite.guests);
+        if (invite) {
+          this.$emit('inviteSelected', invite.guests);
+        }
       }
     },
 
     filters: {
-      titlecase(value){
+      titlecase(value: string){
         return value.replace(/(?:^|\s|-)\S/g, x => x.toUpperCase());
       }
     }
