@@ -32,7 +32,7 @@
 
         <!-- This displays the radio boxes for selecting the invite-->
         <div class="block" v-for="match in searchResults.matches">
-          <b-radio v-model="selectedInvite" name="name" :native-value="match.inviteID">
+          <b-radio v-model="selectedInvite" name="name" :native-value="match.inviteId">
             <p v-for="guest in match.guests">
               {{ guest.firstName | titlecase }} {{ guest.lastName | titlecase }}
             </p>
@@ -56,7 +56,8 @@
 <script lang="ts">
   import  Vue from "vue"
   import Buefy from 'buefy'
-  import { TestData } from "@/models/invite";
+  import { SearchResult } from "@/models/invite";
+  import {ISearchResult} from "~/models/interfaces";
 
   Vue.use(Buefy)
 
@@ -68,27 +69,33 @@
     data() {
       return {
         searchVal: "",
-        searchResults: TestData,
+        searchResults: null,
         searchCommenced: false,
         foundInvites: false,
-        selectedInvite: ""
+        selectedInvite: "",
+        resData: {}
       }
     },
 
     methods: {
       search() {
-        // fetch(
-        //   "https://api.flettsgetmarried.com/search?firstName=foo&lastName=hazelman"
-        // )
-        // .then(res => (this.searchResults = res.json()));
+        const firstName = this.searchVal.split(" ")[0];
+        const lastName = this.searchVal.split(" ")[1];
+        fetch(
+          `https://api.flettsgetmarried.com/search?firstName=${firstName}&lastName=${lastName}`
+        )
+        .then(res => res.json())
+        .then(data => this.handleSearchResponse(data));
+      },
+      handleSearchResponse(data: ISearchResult) {
+        this.searchResults = new SearchResult(data);
         this.searchCommenced = true;
         this.foundInvites = this.searchResults.matches.length >= 1;
       },
       selectInvite() {
-        // const invite = this.searchResults.matches.find((match) => {match.inviteID = this.selectedInvite});
-        // console.log(invite.guests);
-        const invite = this.searchResults.matches.find(m => m.inviteID == this.selectedInvite);
+        const invite = this.searchResults.matches.find(m => m.inviteId == this.selectedInvite);
         if (invite) {
+          console.log(invite.inviteId);
           this.$emit('inviteSelected', invite.guests);
         }
       }
