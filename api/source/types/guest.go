@@ -17,7 +17,7 @@ type Guest struct {
 	PK         string  `json:"-" dynamodbav:"PK"`
 	SK         string  `json:"-" dynamodbav:"SK"`
 	ID         string  `json:"id"`
-	InviteID   string  `json:"inviteID"`
+	InviteID   string  `json:"inviteId"`
 	FirstName  string  `json:"firstName"`
 	LastName   string  `json:"lastName"`
 	RSVP       bool    `json:"rsvp"`

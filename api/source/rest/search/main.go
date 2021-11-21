@@ -5,6 +5,7 @@ import (
 	"flettsgetmarried.com/api/types"
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
+	"github.com/aws/aws-sdk-go-v2/aws"
 	"net/http"
 	"strings"
 )
@@ -25,7 +26,7 @@ func Handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRespo
 	for _, inviteID := range invites {
 		guests, _ := services.GetGuestsOnInvite(inviteID)
 		matches = append(matches, types.HTTPBody{
-			InviteID: &inviteID,
+			InviteID: aws.String(inviteID),
 			Guests:   guests,
 		})
 	}
