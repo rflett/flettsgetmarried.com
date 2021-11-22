@@ -43,6 +43,13 @@ export class SearchMatch implements ISearchMatch {
       this.inviteId = "";
     }
   }
+
+  toDto(): ISearchMatch {
+    return {
+      inviteId: this.inviteId,
+      guests: this.guests
+    }
+  }
 }
 
 export class SearchResult implements ISearchResult {
