@@ -11,7 +11,10 @@
             <b-input v-model="searchVal"
                      type="text"
                      placeholder="Ryan Flett"
-                     required></b-input>
+                     required
+                     validation-message="First and last name separated by space"
+                     pattern="[a-zA-Z]{1,} [a-zA-Z]{1,}"
+            ></b-input>
           </b-field>
         </div>
         <b-field>
@@ -19,6 +22,7 @@
                     icon-left="magnify"
                     label="Search"
                     @click="search"
+                    :disabled="!nameIsValid"
                     expanded />
         </b-field>
       </div>
@@ -57,7 +61,7 @@
   import  Vue from "vue"
   import Buefy from 'buefy'
   import { SearchResult } from "@/models/invite";
-  import {ISearchResult} from "~/models/interfaces";
+  import {ISearchMatch, ISearchResult} from "~/models/interfaces";
 
   Vue.use(Buefy)
 
@@ -69,11 +73,10 @@
     data() {
       return {
         searchVal: "",
-        searchResults: null,
-        searchCommenced: false,
-        foundInvites: false,
         selectedInvite: "",
-        resData: {}
+        foundInvites: false,
+        searchCommenced: false,
+        searchResults: new SearchResult(),
       }
     },
 
@@ -93,10 +96,9 @@
         this.foundInvites = this.searchResults.matches.length >= 1;
       },
       selectInvite() {
-        const invite = this.searchResults.matches.find(m => m.inviteId == this.selectedInvite);
+        const invite = this.searchResults.matches.find((m: ISearchMatch) => m.inviteId == this.selectedInvite);
         if (invite) {
-          console.log(invite.inviteId);
-          this.$emit('inviteSelected', invite.guests);
+          this.$emit('inviteSelected', invite);
         }
       }
     },
@@ -104,6 +106,13 @@
     filters: {
       titlecase(value: string){
         return value.replace(/(?:^|\s|-)\S/g, x => x.toUpperCase());
+      }
+    },
+
+    computed: {
+      nameIsValid(): boolean {
+        const re = new RegExp("[a-zA-Z]+ [a-zA-Z]+");
+        return re.test(this.searchVal);
       }
     }
 

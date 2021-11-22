@@ -18,27 +18,27 @@
 
           <b-step-item step="2" label="RSVP" icon="ticket">
             <h1 class="title has-text-centered">Attendance</h1>
-            <Attendance :guests="$data.guests" @nextClicked="guestsAttending()"/>
+            <Attendance :guests="$data.selectedInvite.guests" @nextClicked="guestsAttending()"/>
           </b-step-item>
 
           <b-step-item step="3" label="Diet" icon="food" :clickable="$data.attending">
             <h1 class="title has-text-centered">Dietary Requirements</h1>
-            <Diet :guests="$data.guests" @nextClicked="guestDietFinished()"/>
+            <Diet :guests="$data.selectedInvite.guests" @nextClicked="guestDietFinished()"/>
           </b-step-item>
 
           <b-step-item step="4" label="Music" icon="music" :clickable="$data.attending">
             <h1 class="title has-text-centered">Pick a song to play</h1>
-            <Music :guests="$data.guests" @nextClicked="musicFinished()"/>
+            <Music :guests="$data.selectedInvite.guests" @nextClicked="musicFinished()"/>
           </b-step-item>
 
           <b-step-item step="5" label="COVID" icon="needle" :clickable="$data.attending">
             <h1 class="title has-text-centered">COVID-19 Vaccination Status</h1>
-            <COVID :guests="$data.guests" @nextClicked="covidFinished()"/>
+            <COVID :guests="$data.selectedInvite.guests" @nextClicked="covidFinished()"/>
           </b-step-item>
 
           <b-step-item step="6" label="Finish" icon="glass-flute">
             <h1 class="title has-text-centered">Thank you!</h1>
-            <Finished :guests="$data.guests" :attending="$data.attending" @finishClicked="finishClicked()"/>
+            <Finished :guests="$data.selectedInvite.guests" :attending="$data.attending" @finishClicked="finishClicked()"/>
           </b-step-item>
         </b-steps>
       </div>
@@ -48,7 +48,7 @@
 <script lang="ts">
   import  Vue from "vue"
   import Buefy from 'buefy'
-  import { Guest } from "~/models/invite";
+  import {Guest, SearchMatch} from "~/models/invite";
 
   Vue.use(Buefy)
 
@@ -61,23 +61,23 @@
     data() {
       const data : {
         activeStep: number,
-        guests: Guest[],
         attending: boolean,
+        selectedInvite: SearchMatch
       } = {
         activeStep: 0,
-        guests: [],
         attending: false,
+        selectedInvite: new SearchMatch()
       };
       return data;
     },
 
     methods: {
-      inviteSelected(guests: Guest[]) {
-        this.guests = guests;
+      inviteSelected(invite: SearchMatch) {
         this.activeStep = 1;
+        this.selectedInvite = invite;
       },
       guestsAttending() {
-        this.attending = this.guests.filter((g: Guest) => g.rsvp).length > 0;
+        this.attending = this.selectedInvite.guests.filter((g: Guest) => g.rsvp).length > 0;
         if (this.attending) {
           this.activeStep = 2;
         } else {

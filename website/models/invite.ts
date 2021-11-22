@@ -34,9 +34,14 @@ export class SearchMatch implements ISearchMatch {
   guests: IGuest[];
   inviteId: string;
 
-  constructor(fromServer: ISearchMatch) {
-    this.guests = fromServer.guests;
-    this.inviteId = fromServer.inviteId;
+  constructor(fromServer?: ISearchMatch) {
+    if (fromServer) {
+      this.guests = fromServer.guests;
+      this.inviteId = fromServer.inviteId;
+    } else {
+      this.guests = [];
+      this.inviteId = "";
+    }
   }
 }
 
@@ -44,8 +49,13 @@ export class SearchResult implements ISearchResult {
   matches: SearchMatch[];
   partialMatch: boolean;
 
-  constructor(fromServer: ISearchResult) {
-    this.matches = fromServer.matches.map(match => new SearchMatch(match));
-    this.partialMatch = fromServer.partialMatch;
+  constructor(fromServer?: ISearchResult) {
+    if (fromServer) {
+      this.matches = fromServer.matches.map(match => new SearchMatch(match));
+      this.partialMatch = fromServer.partialMatch;
+    } else {
+      this.matches = [];
+      this.partialMatch = true;
+    }
   }
 }
