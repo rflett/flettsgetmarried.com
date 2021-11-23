@@ -26,8 +26,7 @@
         </div>
         <div class="block">
           <b-field>
-            <b-button type="is-light"
-                      icon-left="magnify"
+            <b-button type="is-primary"
                       label="Next"
                       @click="next"
                       expanded />

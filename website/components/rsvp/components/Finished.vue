@@ -17,7 +17,7 @@
       <div class="column is-one-quarter">
         <div class="block">
           <b-field>
-            <b-button type="is-light"
+            <b-button type="is-primary"
                       label="Close"
                       @click="finishClicked"
                       expanded />

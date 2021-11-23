@@ -18,7 +18,6 @@ export interface ISearchMatch {
   guests: IGuest[];
 }
 
-
 export interface ISearchResult {
   partialMatch: boolean;
   matches: ISearchMatch[];

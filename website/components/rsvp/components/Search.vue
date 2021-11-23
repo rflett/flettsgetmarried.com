@@ -45,7 +45,7 @@
         <div class="block">
           <b-field>
             <b-button type="is-primary"
-                      label="Continue"
+                      label="Begin RSVP"
                       @click="selectInvite"
                       expanded />
           </b-field>

@@ -25,24 +25,11 @@ functions:
     description: "Creates an RSVP update"
     memorySize: 128
     timeout: 10
-    events:
-      - http:
-          path: rsvp
-          method: post
 
   search:
     handler: bin/search
     name: ${self:service}-search-${self:provider.stage}
     description: "Search for attendees and get their invites"
-    events:
-      - http:
-          path: search
-          method: get
-          request:
-            parameters:
-              querystrings:
-                firstName: true
-                lastName: true
 
 resources:
   Resources:

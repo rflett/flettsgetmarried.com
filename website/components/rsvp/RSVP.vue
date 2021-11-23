@@ -11,7 +11,7 @@
           label-position="bottom"
           mobile-mode="compact">
 
-          <b-step-item step="1" label="Find Invite" icon="magnify">
+          <b-step-item step="1" label="Search" icon="magnify">
             <h1 class="title has-text-centered">Find your invite</h1>
             <Search @inviteSelected="inviteSelected($event)"/>
           </b-step-item>
@@ -42,6 +42,15 @@
           </b-step-item>
         </b-steps>
       </div>
+
+      <div class="unvaccinatedWarning" v-if="$data.unvaccinatedAttendees">
+        <b-notification
+          type="is-danger"
+          aria-close-label="Close notification"
+          role="alert">
+          Un-vaccinated guests will not be able to attend.
+        </b-notification>
+      </div>
     </section>
 </template>
 
@@ -62,10 +71,12 @@
       const data : {
         activeStep: number,
         allAttending: boolean,
+        unvaccinatedAttendees: boolean,
         selectedInvite: SearchMatch
       } = {
         activeStep: 0,
         allAttending: false,
+        unvaccinatedAttendees: false,
         selectedInvite: new SearchMatch()
       };
       return data;
@@ -91,8 +102,9 @@
         this.activeStep = 4;
       },
       covidFinished() {
-        this.activeStep = 5;
         this.submitData();
+        this.activeStep = 5;
+        this.unvaccinatedAttendees = this.selectedInvite.guests.filter((g: Guest) => g.rsvp && !g.vaccinated).length > 0;
       },
       finishClicked() {
         window.location.href = "https://flettsgetmarried.com/";
@@ -102,8 +114,7 @@
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(this.selectedInvite.toDto())
-        })
-        .then(response => response.json());
+        });
       }
     }
   })
@@ -113,7 +124,15 @@
   @import "~assets/all";
 
   .container {
-    padding-top: 20px;
+    padding: 20px 10px 0px 10px;
+  }
+
+  .unvaccinatedWarning {
+    position: absolute;
+    bottom: 5%;
+    right:0;
+    left:0;
+    padding: 0 20px 0 20px;
   }
 
 </style>

@@ -16,7 +16,7 @@
         </div>
         <div class="block">
           <b-field>
-            <b-button type="is-light"
+            <b-button type="is-primary"
                       label="Next"
                       @click="next"
                       expanded />
