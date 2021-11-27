@@ -10,6 +10,7 @@ var (
 	awsConfig, _ = config.LoadDefaultConfig(context.TODO(), config.WithRegion("ap-southeast-2"))
 	DynamoClient = dynamodb.NewFromConfig(awsConfig)
 	DynamoTable  = "flettsgetmarried"
+	AdminPassword = "hellodarling"
 )
 
 // HTTPBody is the expected request for managing an Invite and its guests

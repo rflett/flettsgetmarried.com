@@ -207,3 +207,39 @@ func GetGuestsOnInvite(inviteID string) ([]types.Guest, error) {
 	}
 	return guests, nil
 }
+
+func GetAllGuests() ([]types.Guest, error) {
+	pkFilter := expression.Name("PK").BeginsWith("GUEST#")
+	expr, err := expression.NewBuilder().WithFilter(pkFilter).Build()
+
+	if err != nil {
+		logger.Log.Error().Err(err).Msg("error building expression for GetGroupFromCode func")
+	}
+
+	// input
+	input := &dynamodb.ScanInput{
+		TableName:                 &types.DynamoTable,
+		ExpressionAttributeNames:  expr.Names(),
+		ExpressionAttributeValues: expr.Values(),
+		FilterExpression:          expr.Filter(),
+	}
+
+	results, err := types.DynamoClient.Scan(context.TODO(), input)
+
+	if err != nil {
+		logger.Log.Error().Err(err).Msg("error getting all guests")
+		return []types.Guest{}, err
+	}
+
+	var guests []types.Guest = nil
+	for _, result := range results.Items {
+		guest := types.Guest{}
+		if err = attributevalue.UnmarshalMap(result, &guest); err != nil {
+			logger.Log.Error().Err(err).Msg("Unable to unmarshal result to guest")
+			continue
+		}
+		guests = append(guests, guest)
+	}
+
+	return guests, nil
+}
