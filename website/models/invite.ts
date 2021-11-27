@@ -1,4 +1,4 @@
-import {IGuest, ISearchMatch, ISearchResult} from "~/models/interfaces";
+import {IGuest, IGuestsResult, ISearchMatch, ISearchResult} from "~/models/interfaces";
 
 export class Guest implements IGuest {
   id: string;
@@ -66,3 +66,16 @@ export class SearchResult implements ISearchResult {
     }
   }
 }
+
+export class GuestsResult implements IGuestsResult {
+  guests: IGuest[];
+
+  constructor(fromServer?: IGuestsResult) {
+    if (fromServer) {
+      this.guests = fromServer.guests
+    } else {
+      this.guests = [];
+    }
+  }
+}
+
