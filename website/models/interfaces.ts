@@ -22,3 +22,7 @@ export interface ISearchResult {
   partialMatch: boolean;
   matches: ISearchMatch[];
 }
+
+export interface IGuestsResult {
+  guests: IGuest[];
+}

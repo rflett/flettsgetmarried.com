@@ -18,22 +18,22 @@
 
           <b-step-item step="2" label="RSVP" icon="ticket">
             <h1 class="title has-text-centered">Attendance</h1>
-            <Attendance :guests="$data.selectedInvite.guests" @nextClicked="guestsAttending()"/>
+            <Attendance :guests="$data.selectedInvite.guests" @nextClicked="guestsAttending()" @backClicked="backClicked()"/>
           </b-step-item>
 
           <b-step-item step="3" label="Diet" icon="food" :clickable="$data.allAttending">
             <h1 class="title has-text-centered">Dietary Requirements</h1>
-            <Diet :guests="$data.selectedInvite.guests" @nextClicked="guestDietFinished()"/>
+            <Diet :guests="$data.selectedInvite.guests" @nextClicked="guestDietFinished()" @backClicked="backClicked()"/>
           </b-step-item>
 
           <b-step-item step="4" label="Music" icon="music" :clickable="$data.allAttending">
             <h1 class="title has-text-centered">Pick a song to play</h1>
-            <Music :guests="$data.selectedInvite.guests" @nextClicked="musicFinished()"/>
+            <Music :guests="$data.selectedInvite.guests" @nextClicked="musicFinished()" @backClicked="backClicked()"/>
           </b-step-item>
 
           <b-step-item step="5" label="COVID" icon="needle" :clickable="$data.allAttending">
             <h1 class="title has-text-centered">COVID-19 Vaccination Status</h1>
-            <COVID :guests="$data.selectedInvite.guests" @nextClicked="covidFinished()"/>
+            <COVID :guests="$data.selectedInvite.guests" @nextClicked="covidFinished()" @backClicked="backClicked()"/>
           </b-step-item>
 
           <b-step-item step="6" label="Finish" icon="glass-flute">
@@ -48,7 +48,7 @@
           type="is-danger"
           aria-close-label="Close notification"
           role="alert">
-          Un-vaccinated guests will not be able to attend.
+          Due to government restrictions we can't have any unvaccinated guests attend the wedding.
         </b-notification>
       </div>
     </section>
@@ -83,6 +83,9 @@
     },
 
     methods: {
+      backClicked() {
+        this.activeStep--;
+      },
       inviteSelected(invite: SearchMatch) {
         this.activeStep = 1;
         this.selectedInvite = invite;

@@ -27,8 +27,13 @@
         <div class="block">
           <b-field>
             <b-button type="is-primary"
-                      label="Next"
+                      label="Submit"
                       @click="next"
+                      expanded />
+          </b-field>
+          <b-field>
+            <b-button label="Back"
+                      @click="back"
                       expanded />
           </b-field>
         </div>
@@ -60,6 +65,9 @@
       next() {
         this.$emit('nextClicked');
       },
+      back() {
+        this.$emit('backClicked')
+      }
     },
 
     filters: {

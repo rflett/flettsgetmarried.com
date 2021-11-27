@@ -8,10 +8,11 @@
     <div class="columns is-centered">
       <div class="column is-one-quarter">
         <div class="block">
-          <b-field v-for="guest in guests" v-bind:data="guest" v-bind:key="guest.id">
-            <b-checkbox v-model="guest.rsvp">
-              {{ guest.firstName | titlecase }} {{ guest.lastName | titlecase }}
-            </b-checkbox>
+          <b-field class="attendance" v-for="guest in guests" v-bind:data="guest" v-bind:key="guest.id">
+            <p><b>{{ guest.firstName | titlecase }} {{ guest.lastName | titlecase }}</b></p>
+            <b-switch v-model="guest.rsvp" :rounded="false" passive-type="is-dark" type="is-success">
+              {{ guest.rsvp ? "Is attending &#127881;" : "Is not attending &#128577;" }}
+            </b-switch>
           </b-field>
         </div>
         <div class="block">
@@ -19,6 +20,11 @@
             <b-button type="is-primary"
                       label="Next"
                       @click="next"
+                      expanded />
+          </b-field>
+          <b-field>
+            <b-button label="Back"
+                      @click="back"
                       expanded />
           </b-field>
         </div>
@@ -50,6 +56,9 @@
       next() {
         this.$emit('nextClicked');
       },
+      back() {
+        this.$emit('backClicked')
+      }
     },
 
     filters: {
@@ -62,6 +71,14 @@
 </script>
 
 <style lang="scss" scoped>
-@import "~assets/all";
+  @import "~assets/all";
+
+  .attendance {
+    display: block;
+
+    p {
+      padding-bottom: 5px;
+    }
+  }
 
 </style>
