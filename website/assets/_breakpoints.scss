@@ -41,6 +41,12 @@ $xl: 1200px;
   }
 }
 
+@mixin lg-down() {
+  @media (max-width: $lg) {
+    @content;
+  }
+}
+
 @mixin col-xl() {
   @media (min-width: $xl) {
     @content;
