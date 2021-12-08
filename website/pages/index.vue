@@ -40,9 +40,9 @@
         <h1 class="title" id="photos">Photo Gallery</h1>
 
         <div class="columns">
-          <div class="column"><img src="~assets/img/boys.png"></div>
-          <div class="column"><img src="~assets/img/boys.png"></div>
-          <div class="column"><img src="~assets/img/boys.png"></div>
+          <div class="column"><img src="~assets/img/1.jpg"></div>
+          <div class="column"><img src="~assets/img/2.jpg"></div>
+          <div class="column"><img src="~assets/img/3.jpg"></div>
         </div>
 
         <p>Please click the link below to share any photos that you take on the day, including any posted to social media as this gives us higher quality copies of guests photos.</p>
@@ -64,12 +64,17 @@
         <p>
           Please click on the button below to register your attendance, including those who are sadly unable to attend. You are able to respond for all guests on the same invitation.
         </p>
-        <div class="columns">
+        <div class="columns is-multiline">
           <div class="column is-4 is-offset-4">
             <div class="block"></div>
             <div class="buttons">
               <b-button type="is-primary" expanded @click="goto('rsvp')">RSVP</b-button>
             </div>
+          </div>
+          <div class="column is-6 is-offset-3">
+            <figure class="image">
+              <img src="~assets/img/21st.jpg" />
+            </figure>
           </div>
         </div>
       </section>
