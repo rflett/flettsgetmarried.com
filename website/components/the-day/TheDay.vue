@@ -15,7 +15,7 @@
         <h1 class="title" id="reception">Reception</h1>
         <h1 class="title is-6">6:00PM</h1>
         <p>COROWA WHISKY AND CHOCOLATE</p>
-        <a href="https://goo.gl/maps/3isV4jjQxFgdQ6XZA">20-24 Steel Street, Corowa NSW, 2646</a>
+        <a href="https://goo.gl/maps/3isV4jjQxFgdQ6XZA" target="_blank">20-24 Steel Street, Corowa NSW, 2646</a>
         <p>Courtyard and Café will be available from 5pm for drinks and canapes</p>
         <p>Doors will open at 6pm, please be seated for bridal party to arrive at 6:15pm</p>
         <br />
