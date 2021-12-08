@@ -1,6 +1,6 @@
 <template>
-  <section class="section is-medium">
-    <h1 class="title is-4" id="faq">FAQ</h1>
+  <section class="section is-small">
+    <h1 class="title" id="faq">FAQ</h1>
 
     <div v-for="item in faq" v-bind:data="item" v-bind:key="item.question">
       <h1 class="title is-6">{{ item.question }}</h1>
@@ -39,4 +39,9 @@
 
 <style lang="scss" scoped>
   @import "~assets/all";
+
+  section {
+    background-color: #ebdacc;
+  }
+
 </style>

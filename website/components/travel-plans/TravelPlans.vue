@@ -1,12 +1,12 @@
 <template>
-  <section class="section is-medium">
+  <section class="section is-small">
     <div class="columns">
       <div class="column">
-        <h1 class="title is-4" id="travel">Travel</h1>
+        <h1 class="title" id="travelPlans">Travel</h1>
         <p>We recommend you find a place to stay in Corowa on the Friday night after the wedding, with a few good options within close proximity to Corowa Whisky and Chocolate. Being a small town, there will be limited taxi services available, and don’t even bother with Uber!</p>
       </div>
       <div class="column">
-        <h1 class="title is-4" id="accommodation">Accommodation</h1>
+        <h1 class="title" id="accommodation">Accommodation</h1>
         <p>We recommend you find a place to stay in Corowa on the Friday night after the wedding, with a few good options within close proximity to Corowa Whisky and Chocolate. Being a small town, there will be limited taxi services available, and don’t even bother with Uber!</p>
       </div>
     </div>

@@ -1,16 +1,13 @@
 <template>
   <section class="hero">
     <div class="hero-head">
-      <b-navbar :spaced="true">
+      <b-navbar :spaced="true" :fixed-top="true" :shadow="true">
         <template #start>
-          <b-navbar-item  @click="goto('home')">
-            the wedding
-          </b-navbar-item>
+          <b-navbar-item  @click="goto('ceremony')">the wedding</b-navbar-item>
           <b-navbar-item href="#" @click="goto('ourStory')">our story</b-navbar-item>
           <b-navbar-item href="#" @click="goto('bridalParty')">bridal party</b-navbar-item>
-          <b-navbar-item href="#" @click="goto('travelPlans')">travel plans</b-navbar-item>
-          <b-navbar-item href="#" @click="goto('accom')">accommodation options</b-navbar-item>
-          <b-navbar-item href="#" @click="goto('gift')">gifts</b-navbar-item>
+          <b-navbar-item href="#" @click="goto('travelPlans')">travel + accommodation</b-navbar-item>
+          <b-navbar-item href="#" @click="goto('gifts')">gifts</b-navbar-item>
           <b-navbar-item href="#" @click="goto('recovery')">the day after</b-navbar-item>
           <b-navbar-item href="#" @click="goto('faq')">faq</b-navbar-item>
           <b-navbar-item href="https://photos.app.goo.gl/pczNbTH7Yreju3o16" target="_blank">photos from the day</b-navbar-item>
@@ -39,8 +36,8 @@
       <Recovery v-if="activePage === 'home'" />
       <FAQ v-if="activePage === 'home'" />
 
-      <section class="section is-medium">
-        <h1 class="title is-4" id="rsvp">RSVP</h1>
+      <section class="section is-small" v-if="activePage === 'home'">
+        <h1 class="title" id="rsvp">RSVP</h1>
         <p>
           Please click on the link below to register your attendance, including those who are sadly unable to attend. You are able to respond for all guests on the same invitation.
         </p>
@@ -53,28 +50,39 @@
 
 <script>
 
-export default {
-  name: 'Index',
+  import {scrollToID} from "@/models/utilities";
 
-  components: {
-  },
+  export default {
+    name: 'Index',
 
-  data() {
-    return {
-      activePage: 'home'
-    };
-  },
+    components: {
+    },
 
-  methods: {
-    goto(page) {
-        this.activePage = page;
+    data() {
+      return {
+        activePage: 'home'
+      };
+    },
+
+    methods: {
+      goto(page) {
+          if (page === "rsvp") {
+            this.activePage = "rsvp";
+          } else {
+            this.activePage = "home";
+            scrollToID(page, 84);
+          }
+      }
     }
   }
-}
 </script>
 
 <style lang="scss" scoped>
   .hero-body {
     padding: 0 20px 10px 20px;
+  }
+
+  .navbar {
+    background-color: white;
   }
 </style>

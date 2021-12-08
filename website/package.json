@@ -14,7 +14,8 @@
     "nuxt": "^2.14.12",
     "nuxt-buefy": "^0.3.31",
     "nuxt-fontawesome": "^0.4.0",
-    "vue-axios": "^3.4.0"
+    "vue-axios": "^3.4.0",
+    "vue2-smooth-scroll": "^1.5.1"
   },
   "devDependencies": {
     "@nuxt/typescript-build": "^1.0.3",

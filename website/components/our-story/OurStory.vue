@@ -1,6 +1,6 @@
 <template>
-  <section class="section is-medium">
-    <h1 class="title is-4" id="ourStory">Our Story</h1>
+  <section class="section is-small">
+    <h1 class="title" id="ourStory">Our Story</h1>
 
     <p>
       Kara and Ryan have ‘officially’ been together since the morning of Wednesday, July 28th, 2010. However those closest to them at the time will attest that their love was blossoming much earlier than that.

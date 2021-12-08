@@ -5,7 +5,7 @@
 <style lang="scss">
 
   html, body {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Lustria', sans-serif;
   }
 
   @font-face {
