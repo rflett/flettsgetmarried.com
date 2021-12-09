@@ -48,7 +48,6 @@
         <p>Please click the link below to share any photos that you take on the day, including any posted to social media as this gives us higher quality copies of guests photos.</p>
         <p>We please ask that you refrain from posting any photos to social media on our day, until the bride or groom have shared their own posts after the weekend.</p>
         <p>If you are posting anything to social media, please use the hashtag #flettsgetmarried.</p>
-        <p>We will also have a photobooth at reception which we highly encourage you take advantage of!</p>
         <div class="columns">
           <div class="column is-4 is-offset-4">
             <div class="block"></div>
