@@ -69,7 +69,7 @@
       return {
         boys: [
           { name: 'James Davies', role: 'Best Man',  bio: 'James and Ryan have been close friends since primary school, despite 3 interstate moves between them. Over the years they have built great memories driving paddock bashers on the farm, talking astronomy and philospohy while staring at the stars as kids, or playing live music alongside one another through highschool.'},
-          { name: 'Brendan Flett', role: 'Groomsman',  bio: 'Brendan has been by Ryan\'s side ever since he was 3 years old and will be again for this special day. You\'d often find Brendan pushing Ryan around on his tricycle or trialing out some dangerous activity \'just to be sure\'.'},
+          { name: 'Brendan Flett', role: 'Groomsman',  bio: 'Brendan has been by Ryan\'s side ever since he was 3 years old and will be again for this special day. You\'d often find Brendan pushing Ryan around on his tricycle or trialing some dangerous activity \'just to be sure\'.'},
           { name: 'James Flett', role: 'Groomsman', bio: 'James was always that pesky 3rd child so it makes sense for him to be 3rd groomsman too. Look out ladies because this one is single as well - just like his golf handicap!'},
           { name: 'Luke Meeking', role: 'Groomsman & MC', bio: 'Luke and Ryan have been great friends from high school and have become closer over the years through high school productions and living in Brisbane together. Kara and Luke have been Rogers Street neighbours since they were born and completed their Deb together in 2010.'},
         ],
