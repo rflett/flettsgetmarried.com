@@ -31,16 +31,15 @@
         :striped="false"
         :narrowed="true"
         :mobile-cards="true"
-        :row-class="(row, index) => row.inviteId % 2 === 0 && 'is-dark'"
       >
         <template slot-scope="props">
-          <b-table-column field="inviteId" label="Invite" width="15" centered>
-            {{ +props.row.inviteId }}
+          <b-table-column field="inviteId" label="Invite" width="15" centered sortable>
+            {{ props.row.inviteId }}
           </b-table-column>
-          <b-table-column field="name" label="Name" width="300">
+          <b-table-column field="firstName" label="Name" width="250" sortable>
             {{ props.row.firstName | titlecase }} {{ props.row.lastName | titlecase }}
           </b-table-column>
-          <b-table-column field="rsvp" label="RSVP" width="15">
+          <b-table-column field="rsvp" label="RSVP" width="15" sortable>
               <span class="tag" :class="props.row.rsvp ? 'is-success' : 'is-danger'">
                 {{ props.row.rsvp ? "Yes" : "No" }}
               </span>
@@ -50,7 +49,7 @@
                 {{ props.row.vaccinated ? "Yes" : "No" }}
               </span>
           </b-table-column>
-          <b-table-column field="updatedAt" label="Updated At" width="20">
+          <b-table-column field="updatedAt" label="Updated At" width="130" sortable>
               <span class="tag" v-if="props.row.updatedAt">
                 {{ new Date(props.row.updatedAt).toLocaleDateString() }}
               </span>
