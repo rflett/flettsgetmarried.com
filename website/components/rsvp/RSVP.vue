@@ -95,7 +95,7 @@
         if (this.allAttending) {
           this.activeStep = 2;
         } else {
-          this.activeStep = 5;
+          this.sumbit();
         }
       },
       guestDietFinished() {
@@ -105,14 +105,17 @@
         this.activeStep = 4;
       },
       covidFinished() {
-        this.submitData();
-        this.activeStep = 5;
+        this.sumbit();
         this.unvaccinatedAttendees = this.selectedInvite.guests.filter((g: Guest) => g.rsvp && !g.vaccinated).length > 0;
+      },
+      sumbit() {
+        this.sendData();
+        this.activeStep = 5;
       },
       finishClicked() {
         window.location.href = "https://flettsgetmarried.com/";
       },
-      submitData() {
+      sendData() {
         fetch("https://api.flettsgetmarried.com/rsvp", {
           method: "POST",
           headers: { "Content-Type": "application/json" },

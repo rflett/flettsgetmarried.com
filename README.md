@@ -10,6 +10,13 @@ npm install
 
 # serve with hot reload at localhost:80
 npm run dev
+
+# build as SPA
+nuxt build --spa
+
+# deploy
+cd dist
+aws s3 sync . s3://flettsgetmarried.com
 ```
 
 ## API
